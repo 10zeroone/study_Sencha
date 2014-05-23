@@ -48,6 +48,7 @@ Ext.application({
 			store:companyStore,
 			//리스트에 데이터가 표시되는 방식, 즉 템플릿을 설정
 			itemTpl:'<div>직급:{company_grade} 부서:{company_class} 이름:<b>{name}</b></div>',
+			
 
 			//아이콘 클릭시 이벤트 처리
 			onItemDisclosure:{
@@ -57,11 +58,12 @@ Ext.application({
 				//e는 이벤트 정보를 갖는 탭 이벤트 객체
 				
 				handler:function(record, btn, index, e){
-					alert('직급:'+record.get('company_grade') + ', 부서:' + record.get('company_class') + ',이름:' + record.get('name') );
+					alert('직급:'+record.get('company_grade') + ', 부서:' + record.get('company_class') + ', 이름:' + record.get('name') );
 				}
 				
-			},
-			
+			}
+		
+/*			,
 			//아이콘 표시
 			onItemDisclosure:true,
 			
@@ -75,7 +77,8 @@ Ext.application({
 							', ' + companyStore.data.items[index].data.name
 					);
 				}
-			}
+			}*/
+			
 		});
 		
 		
