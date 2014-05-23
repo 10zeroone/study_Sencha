@@ -64,6 +64,7 @@ Ext.application({
 			}
 		
 /*			,
+ * 			//리스트 클릭시 이벤트 처리
 			//아이콘 표시
 			onItemDisclosure:true,
 			
