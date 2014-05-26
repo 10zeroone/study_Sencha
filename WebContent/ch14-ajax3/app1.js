@@ -8,15 +8,16 @@ Ext.application({
 				message:'로드 중...'
 			});
 			
-			
+			//JSON데이터 읽어오기
 			Ext.Ajax.request({
 				url:'json_data.jsp',
 				dataType:'json',
-				success:function(response, options){
+				success:function(response, options){	//성공시 호출
 					//로드 마스크 해제
 					Ext.Viewport.setMasked(false);
 					
 					//데이터를 JSON형태인 배열형태로 인식해서 받음
+																		//true: json 데이터에 오류가 있을시 예외로 보여주기 위해  true처리, 생략가능
 					var phoneArray = Ext.JSON.decode(response.responseText, true);
 					
 					//데이터 넘겨주기
@@ -24,7 +25,7 @@ Ext.application({
 						displayPhoneList(phoneArray);
 					}
 				},
-				failure:function(response, options){
+				failure:function(response, options){	//실패시 호출
 					//로드 마스크 해제
 					Ext.Viewport.setMasked(false);
 					Ext.Msg.alert('알림','실패: ' + response.status, Ext.emptyFn);
@@ -38,6 +39,7 @@ Ext.application({
 			//초기화
 			listPanel.removeAll(true);
 			
+			//배열로 부터 데이터 가져오기
 			for(var i=0; i<phoneArray.length; i++){
 				var phone = phoneArray[i];
 				var pno = phone.pno;
@@ -45,12 +47,12 @@ Ext.application({
 				var pimage = phone.pimage;
 				
 				var item = {
-						html:'<table style=width:100%;border:1px;border-bottom-style:solid;>' +
+						html:'<table style="width:100%;border:1px;border-bottom-style:solid;">' +
 							'<tr>' +
-								'<td style=width:50px;padding:5px>' + pno + '</td>' +
-								'<td style=padding-left:5px>' + pname + '</td>' +
-								'<td style=text-align:right; padding:5px>' + 
-									'<img style=width:30px; height:50px; src=../res/' + pimage +
+								'<td style="width:50px;padding:5px">' + pno + '</td>' +
+								'<td style="padding-left:5px">' + pname + '</td>' +
+								'<td style="text-align:right; padding:5px">' + 
+									'<img style="width:30px; height:50px;" src=../res/' + pimage +
 									' border=0>' +
 								'</td>' +
 							'</tr>' +
