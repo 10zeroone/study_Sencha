@@ -15,14 +15,18 @@ Ext.application({
 			//Model을 스토어에 적용
 			model:'phone',
 			proxy:{
+				//비동기 통신
 				type:'ajax',
+				//jsp파일 호출
 				url:'json_data.jsp',
 				reader:{
+					//json형태로 처리
 					type:'json',
 					//프로퍼티 지정
 					rootProperty:'data'	//생략 가능, 생략시 [{},{}]형식으로 JSON파일 구성해야 함
 				}
 			},
+			//바로 읽어오도록 설정
 			autoLoad:true
 		});
 		
@@ -33,7 +37,7 @@ Ext.application({
 				xtype:'loadmask',
 				message:'로딩 중...'
 			},
-			//itemTpl이 배열이기 때문에 +연산자를 사용하는 것이 아니라 ,를 써야 함
+			//itemTpl이 배열([])이기 때문에 +연산자를 사용하는 것이 아니라 ,를 써야 함
 			itemTpl:[
 			         '<div style=width:100%;>',
 				         '<table style="width:100%;>',
